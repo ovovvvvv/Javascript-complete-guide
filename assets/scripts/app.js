@@ -6,6 +6,8 @@ function add(num1, num2) {
   return result;
 }
 
+alert(result);
+
 currentResult = add(1, 2);
 
 let caclulationDescription = "(" + defaultResult + " + 10) * 3 / 2 - 1";
