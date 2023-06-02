@@ -1,15 +1,10 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
-function add(num1, num2) {
-  const result = num1 + num2;
-  return result;
+function add() {
+  currentResult = currentResult + userInput.value;
+  outputResult(currentResult, "");
 }
 
-alert(result);
-
-currentResult = add(1, 2);
-
-let caclulationDescription = "(" + defaultResult + " + 10) * 3 / 2 - 1";
-
-outputResult(currentResult, caclulationDescription);
+addBtn.addEventListener("click", add);
+//addBtn은 함수이기 때문에 'click, ... 들은 매개변수가 된당
