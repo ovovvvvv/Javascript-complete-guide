@@ -1,13 +1,15 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
+// 입력 필드에서 입력값 가져옴
 function getUserNumberInput() {
   return parseInt(userInput.value);
 }
 
+// 계산 로그 생성과 작성
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
-  outputResult(currentResult, calcDescription);
+  outputResult(currentResult, calcDescription); //벤더 파일에서 옴
 }
 
 function add() {
