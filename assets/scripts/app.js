@@ -11,6 +11,7 @@ function getUserNumberInput() {
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescription); //벤더 파일에서 옴
+  
 }
 
 function writeToLog(
