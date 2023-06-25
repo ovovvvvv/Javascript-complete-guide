@@ -4,7 +4,7 @@ let logEntries = [];
 
 // 입력 필드에서 입력값 가져옴
 function getUserNumberInput() {
-  return userInput.value;
+  return parseInt(userInput.value);
 }
 
 // 계산 로그 생성과 작성
@@ -33,15 +33,23 @@ function calculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
   let mathOperator;
+
   if (calculationType === "ADD") {
     currentResult += enteredNumber;
     mathOperator = "+";
-  } else {
-    currentReust -= enteredNumber;
+  } else if (calculationType === "SUBTRACT") {
+    currentResult -= enteredNumber;
     mathOperator = "-";
+  } else if (calculationType === "MULTIPLY") {
+    currentResult *= enteredNumber;
+    mathOperator = "*";
+  } else {
+    currentResult /= enteredNumber;
+    mathOperator = "/";
   }
+
   createAndWriteOutput(mathOperator, initialResult, enteredNumber);
-  writeToLog("ADD", initialResult, enteredNumber, currentResult);
+  writeToLog(calculationType, initialResult, enteredNumber, currentResult);
 }
 
 function add() {
@@ -49,27 +57,15 @@ function add() {
 }
 
 function subtract() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult -= enteredNumber;
-  createAndWriteOutput("-", initialResult, enteredNumber);
-  writeToLog("SUBTRACT", initialResult, enteredNumber, currentResult);
+  calculateResult("SUBTRACT");
 }
 
 function multiply() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult *= enteredNumber;
-  createAndWriteOutput("*", initialResult, enteredNumber);
-  writeToLog("MULTIPLY", initialResult, enteredNumber, currentResult);
+  calculateResult("MULTIPLY");
 }
 
 function divide() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult /= enteredNumber;
-  createAndWriteOutput("/", initialResult, enteredNumber);
-  writeToLog("DIVIDE", initialResult, enteredNumber, currentResult);
+  calculateResult("DIVIDE");
 }
 
 addBtn.addEventListener("click", add);
