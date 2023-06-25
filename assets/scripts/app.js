@@ -4,14 +4,13 @@ let logEntries = [];
 
 // 입력 필드에서 입력값 가져옴
 function getUserNumberInput() {
-  return parseInt(userInput.value);
+  return userInput.value;
 }
 
 // 계산 로그 생성과 작성
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescription); //벤더 파일에서 옴
-  
 }
 
 function writeToLog(
@@ -30,12 +29,23 @@ function writeToLog(
   console.log(logEntries);
 }
 
-function add() {
+function calculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
-  currentResult += enteredNumber;
-  createAndWriteOutput("+", initialResult, enteredNumber);
+  let mathOperator;
+  if (calculationType === "ADD") {
+    currentResult += enteredNumber;
+    mathOperator = "+";
+  } else {
+    currentReust -= enteredNumber;
+    mathOperator = "-";
+  }
+  createAndWriteOutput(mathOperator, initialResult, enteredNumber);
   writeToLog("ADD", initialResult, enteredNumber, currentResult);
+}
+
+function add() {
+  calculateResult("ADD");
 }
 
 function subtract() {
